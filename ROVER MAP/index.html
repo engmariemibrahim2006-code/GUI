@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rover Tracking</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>   
+
+<body>
+
+  <h1 class="mb-4 text-center">ROVER TRACKING <span class="badge text-bg-secondary"></span></h1>
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <!-- Map and Controls -->
+      <div class="col-md-6 map-section">
+        
+        <canvas id="rover-map" width="500" height="500"></canvas>
+
+        <!-- Switches under map -->
+        <div class="switches">
+          <h5>Display Options</h5>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="switchRover" checked>
+            <label class="form-check-label" for="switchRover">Rover</label>
+          </div>
+
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="switchPath" checked>
+            <label class="form-check-label" for="switchPath">Path</label>
+          </div>
+
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="switchMine" checked>
+            <label class="form-check-label" for="switchMine">Mine</label>
+          </div>
+        </div>
+
+        <!-- Data under switches -->
+        <div class="info-section">
+          <h5>Rover Data</h5>
+          <p>X-axis: <span id="x-value">0</span></p>
+          <p>Y-axis: <span id="y-value">0</span></p>
+          <p>Angle: <span id="angle-value">0</span>°</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('rover-map');
+    const ctx = canvas.getContext('2d');
+    const gridSize = 10;
+    const cellSize = canvas.width / gridSize;
+
+    function drawGrid() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      for (let i = 0; i <= gridSize; i++) {
+        ctx.moveTo(i * cellSize, 0);
+        ctx.lineTo(i * cellSize, canvas.height);
+        ctx.moveTo(0, i * cellSize);
+        ctx.lineTo(canvas.width, i * cellSize);
+      }
+      ctx.strokeStyle = "#aaa";
+      ctx.stroke();
+      ctx.closePath();
+    }
+
+    function drawRover(x, y, color = 'red') {
+      ctx.fillStyle = color;
+      ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+    }
+
+    function drawPath() {
+      ctx.fillStyle = 'blue';
+      const pathPoints = [
+        {x: 1, y: 2},
+        {x: 2, y: 3},
+        {x: 3, y: 4}
+      ];
+      pathPoints.forEach(p => {
+        ctx.fillRect(p.x * cellSize, p.y * cellSize, cellSize, cellSize);
+      });
+    }
+
+    function drawMine() {
+      ctx.fillStyle = 'black';
+      ctx.beginPath();
+      ctx.arc(6 * cellSize + cellSize / 2, 7 * cellSize + cellSize / 2, cellSize / 3, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function updateMap() {
+      drawGrid();
+      if (document.getElementById('switchRover').checked) drawRover(x, y);
+      if (document.getElementById('switchPath').checked) drawPath();
+      if (document.getElementById('switchMine').checked) drawMine();
+    }
+
+    // Initial draw
+    updateMap();
+
+    // Event listeners for switches
+    document.querySelectorAll('.form-check-input').forEach(sw => {
+      sw.addEventListener('change', updateMap);
+    });
+  </script>
+
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
