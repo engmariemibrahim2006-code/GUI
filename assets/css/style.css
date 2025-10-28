@@ -1,0 +1,33 @@
+body {
+  display: flex;
+  height: 98vh;
+  width: 98vw;
+  margin: 0;
+}
+/* .map, .log {
+  flex: 1;
+  border: 1px solid #000;
+  box-sizing: border-box;
+} */
+
+.map{
+height: 90%;
+width: 100%;
+background-color: black;
+}
+/* 
+.log{
+
+}
+
+.status{
+
+}
+
+.camera{
+
+}
+
+.speed{
+
+} */
