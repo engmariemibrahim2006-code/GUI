@@ -1,44 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ROBO TECH</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap.min.css" />
+    <link href="assets/vendor/bootstrap-icons.css" rel="stylesheet" />
+    <link href="assets/vendor/sweetalert2.min.css" rel="stylesheet" />
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
+    <script src="assets/vendor/sweetalert2.min.js"></script>
+    <script src="assets/vendor/roslib.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ROBO TECH</title>
-  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
-  <link href="assets/vendor/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/sweetalert2.min.css" rel="stylesheet">
-  <script src="assets/vendor/jquery-3.7.1.min.js"></script>
-  <script src="assets/vendor/sweetalert2.min.js"></script>
-  <script src="assets/vendor/roslib.min.js"></script>
-  <link rel="stylesheet" href="assets/css/style.css">
-
-</head>
-
-<body>
-
-  <div class="container-fluid p-0 m-0">
-    <div class="row" style="height: 100vh; width: 100vw;">
-      <div class="col-3" style="height: 100%; ">
-        <div class="status"></div>
-        <div class="speed"></div>
+  <body>
+    <main class="container-fluid p-4 m-0 vh-100 vw-100">
+      <div class="row h-100">
+        <section class="col-3">
+          <div class="status"></div>
+          <div class="speed"></div>
+        </section>
+        <section class="col-5">
+          <div class="map"></div>
+        </section>
+        <section class="col-4 h-100 d-flex flex-column">
+          <div class="camera flex-fill"></div>
+          <div class="log flex-fill"></div>
+        </section>
       </div>
-      <div class="col-5" style="height: 100%;display: flex; ">
-        <div class="map"></div>
-      </div>
-      <div class="col-4" style="height: 100%; ">
-        <div class="camera"></div>
-        <div class="log"></div>
-      </div>
-    </div>
-  </div>
+    </main>
 
-
-
-  <script src="assets/vendor/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/Loader.js"></script>
-  <script src="assets/js/script.js"></script>
-
-</body>
-
+    <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/Loader.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>

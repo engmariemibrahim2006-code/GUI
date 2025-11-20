@@ -1,0 +1,50 @@
+canvas#grid-map {
+  background-color: black;
+  border: 2px solid black;
+  display: block;
+  margin: 0 auto;
+}
+
+.switches {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 3px;
+  flex-wrap: wrap;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-check-label {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.data-section {
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #ecf0f1;
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
+}
+
+.data-section h5 {
+  margin-top: 0;
+  color: #34495e;
+  font-size: 1.2em;
+}
+
+.data-section p {
+  margin: 1% 0;
+  font-size: 1em;
+}
+.data-label {
+  font-weight: bold;
+  color: #2c3e50;
+}

@@ -1,0 +1,53 @@
+<div class="h-100 w-100 component-container grid-map-container">
+  <h2>Map</h2>
+  <canvas id="grid-map" width="500" height="400"></canvas>
+  <div class="switches d-flex gap-5">
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="switchRover"
+        checked
+      />
+      <label class="form-check-label" for="switchRover">Rover</label>
+    </div>
+
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="switchPath"
+        checked
+      />
+      <label class="form-check-label" for="switchPath">Path</label>
+    </div>
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="switchMine"
+        checked
+      />
+      <div class="d-flex gap-1 align-items-center">
+        <img
+          id="mine-img"
+          src="assets/public/tnt.png"
+          alt=""
+          srcset=""
+          height="16px"
+        />
+        <label class="form-check-label" for="switchMine">Mine</label>
+      </div>
+    </div>
+  </div>
+  <div
+    class="data-section d-flex gap-4 align-items-center justify-content-center"
+  >
+    <p>X-axis: <span id="x-value">0</span></p>
+    <p>Y-axis: <span id="y-value">0</span></p>
+    <p>Angle: <span id="angle-value">0</span>°</p>
+  </div>
+</div>
