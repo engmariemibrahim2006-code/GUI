@@ -81,9 +81,9 @@ class GridMap {
   }
   updateMap(filters, rover) {
     this.initMap();
-    if (!filters.pathFilter) this.drawPath(rover.locationHistory);
-    if (!filters.roverFilter) this.drawLocation(rover.currentLocation);
-    if (!filters.mineFilter)
+    if (filters.switchPath) this.drawPath(rover.locationHistory, "yellow");
+    if (filters.switchRover) this.drawLocation(rover.currentLocation, "brown");
+    if (filters.switchMine)
       rover.minesLocations.forEach((mine) => this.drawMine(mine));
   }
 }
@@ -113,12 +113,12 @@ class Rover {
 
 function main() {
   $(document).ready(function () {
-    const myMap = new GridMap("#grid-map", 50, 11);
+    const gridMap = new GridMap("#grid-map", 50, 11);
     const rover = new Rover();
     const filters = {
-      roverFilter: false,
-      mineFilter: false,
-      pathFilter: false,
+      switchRover: false,
+      switchMine: false,
+      switchPath: false,
     };
 
     // Initialize checkboxes state
@@ -126,26 +126,29 @@ function main() {
       filters[key] = $(`#${key}`).is(":checked");
     });
 
-    myMap.updateMap(filters, rover);
-
+    // Get values
+    gridMap.updateMap(filters, rover);
     let iterator = 0;
     const intervalId = setInterval(() => {
-      const deltaX = Math.round(Math.random() + 0.3);
-      const deltaY = Math.round(Math.random() + 0.3);
-      console.log(deltaX, deltaY);
-      rover.move({
-        x: rover.currentLocation.x + deltaX,
-        y: rover.currentLocation.y + deltaY,
-      });
-      myMap.updateMap(filters, rover);
+      const newPointLocation = randomPointGenerator(rover.currentLocation);
+      rover.move(newPointLocation);
+      $("#x-value").html(`${newPointLocation.x}`);
+      $("#y-value").html(`${newPointLocation.y}`);
+      gridMap.updateMap(filters, rover);
       if (++iterator === 5) clearInterval(intervalId);
     }, 2000);
 
     $('input[type="checkbox"]').on("change", function () {
       filters[this.id] = this.checked;
-      myMap.updateMap(filters);
+      gridMap.updateMap(filters, rover);
     });
   });
 }
 
 main();
+
+function randomPointGenerator(oldPoint) {
+  const deltaX = Math.round(Math.random() + 0.3);
+  const deltaY = Math.round(Math.random() + 0.3);
+  return new Point(oldPoint.x + deltaX, oldPoint.y + deltaY);
+}

@@ -1,6 +1,6 @@
 <div class="h-100 w-100 component-container grid-map-container">
   <h2>Map</h2>
-  <canvas id="grid-map" width="500" height="400"></canvas>
+  <canvas id="grid-map" width="500" height="400" class="rounded-2"></canvas>
   <div class="switches d-flex gap-5">
     <div class="form-check form-switch">
       <input
@@ -10,9 +10,11 @@
         id="switchRover"
         checked
       />
-      <label class="form-check-label" for="switchRover">Rover</label>
+      <div class="d-flex gap-1 align-items-center mt-1">
+        <i class="bi bi-truck-flatbed"></i>
+        <label class="form-check-label" for="switchRover">Rover</label>
+      </div>
     </div>
-
     <div class="form-check form-switch">
       <input
         class="form-check-input"
@@ -21,7 +23,10 @@
         id="switchPath"
         checked
       />
-      <label class="form-check-label" for="switchPath">Path</label>
+      <div class="d-flex gap-1 align-items-center mt-1">
+        <i class="bi bi-sign-turn-left"></i>
+        <label class="form-check-label" for="switchPath">Path</label>
+      </div>
     </div>
     <div class="form-check form-switch">
       <input
@@ -31,7 +36,7 @@
         id="switchMine"
         checked
       />
-      <div class="d-flex gap-1 align-items-center">
+      <div class="d-flex gap-1 align-items-center mt-1">
         <img
           id="mine-img"
           src="assets/public/tnt.png"
@@ -44,10 +49,10 @@
     </div>
   </div>
   <div
-    class="data-section d-flex gap-4 align-items-center justify-content-center"
+    class="data-section d-flex gap-4 align-items-center justify-content-center bg-black text-warning rounded-2"
   >
     <p>X-axis: <span id="x-value">0</span></p>
     <p>Y-axis: <span id="y-value">0</span></p>
-    <p>Angle: <span id="angle-value">0</span>°</p>
+    <!-- <p>Angle: <span id="angle-value">0</span>°</p> -->
   </div>
 </div>
